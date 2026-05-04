@@ -1,3 +1,19 @@
+import CTASection from "@/components/marketing/CTASection";
+import FeaturesSection from "@/components/marketing/FeaturesSection";
+import HeroSection from "@/components/marketing/HeroSection";
+import HowItWorks from "@/components/marketing/HowItWorks";
+import PocketSection from "@/components/marketing/PocketSection";
+import ProblemSection from "@/components/marketing/ProblemSection";
+
 export default function HomePage() {
-  return <h1>Welcome to SaaS Homepage</h1>;
+  return (
+    <>
+      <HeroSection />
+      <ProblemSection />
+      <HowItWorks />
+      <FeaturesSection />
+      <PocketSection />
+      <CTASection />
+    </>
+  );
 }

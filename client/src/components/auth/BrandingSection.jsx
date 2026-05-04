@@ -1,20 +1,21 @@
 import Image from "next/image";
 import { Icons } from "../../../constant/icon";
+import { Images } from "../../../constant/iamge";
 
 export default function BrandingSection() {
   return (
- <div className="hidden lg:flex flex-col items-center bg-gradient-to-br from-[#f8f9fc] to-[#eef4ff] p-10 gap-8 overflow-hidden">
-
+    <div className="hidden lg:flex flex-col items-center justify-center bg-gradient-to-br from-[#f8f9fc] to-[#eef4ff] p-10 gap-8">
       {/* GIF Showcase */}
-<div className="w-full max-w-2xl flex justify-center">
-{/* <Image
-  src={Icons.logo}
-  alt="Digital ID Logo"
-  width={10}
-  height={10}
-  className="w-full h-auto object-contain"
-/> */}
-</div>
+      <div className="w-full max-w-xl flex justify-center">
+        <Image
+          src={Images.MobilePhones}
+          alt="Digital ID Logo"
+          width={420}
+          height={180}
+          className="w-[430px] h-auto object-cover"
+          priority
+        />
+      </div>
 
       {/* Headline */}
       <div className="text-center max-w-xl">
@@ -24,20 +25,26 @@ export default function BrandingSection() {
         </h2>
 
         <p className="text-gray-600">
-          Reduce printing costs, streamline identity verification, and empower organizations. 
+          Reduce printing costs, streamline identity verification, and empower
+          organizations.
         </p>
       </div>
 
       {/* Features */}
       <div className="grid grid-cols-3 gap-4 w-full max-w-2xl">
         <div className="bg-white rounded-2xl p-3 shadow text-center">
-          ⚡<br />Instant
+          ⚡<br />
+          Instant
         </div>
         <div className="bg-white rounded-2xl p-3 shadow text-center">
-          🔒<br />Secure
+          🔒
+          <br />
+          Secure
         </div>
         <div className="bg-white rounded-2xl p-3 shadow text-center">
-          🌱<br />Eco
+          🌱
+          <br />
+          Eco
         </div>
       </div>
 
@@ -46,11 +53,8 @@ export default function BrandingSection() {
         <p className="font-semibold">
           “Digital ID ne printing cost 80% kam kar diya!”
         </p>
-        <p className="text-sm text-gray-500 mt-2">
-          — Dr. Neha Verma
-        </p>
+        <p className="text-sm text-gray-500 mt-2">— Dr. Neha Verma</p>
       </div>
-
     </div>
   );
 }
