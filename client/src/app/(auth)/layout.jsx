@@ -1,7 +1,11 @@
-export default function AuthLayout({ children }) {
+import AuthLayout from "@/components/auth/AuthLayout";
+export default function Layout({ children }) {
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <AuthLayout>
+          
       {children}
-    </main>
+
+    </AuthLayout>
+
   );
 }

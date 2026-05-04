@@ -1,5 +1,5 @@
-export default function Signup() {
-  return (
-    <div>signup here</div>
-  );
+import SignupForm from "@/components/auth/SignupForm";
+
+export default function SignupPage() {
+  return <SignupForm />;
 }
