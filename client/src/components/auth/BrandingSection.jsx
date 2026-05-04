@@ -24,7 +24,7 @@ export default function BrandingSection() {
         </h2>
 
         <p className="text-gray-600">
-          Reduce printing costs, streamline identity verification, and empower organizations.
+          Reduce printing costs, streamline identity verification, and empower organizations. 
         </p>
       </div>
 
