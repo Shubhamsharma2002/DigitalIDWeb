@@ -7,6 +7,9 @@ import SecurityCards from '../assets/Image/SecurityCards.png'
 import Phone1 from '../assets/Image/Phone1.png'
 import Phone2 from '../assets/Image/Phone2.png'
 import Phone3 from '../assets/Image/Phone3.png'
+import step1 from'../assets/Image/orgProfile.png'
+import step2 from'../assets/Image/idtemplate.png'
+import step3 from'../assets/Image/memberimport.png'
 export const Images = {
     RightImage,
     LogoGif,
@@ -16,5 +19,8 @@ export const Images = {
     SecurityCards,
     Phone1,
     Phone2,
-    Phone3
+    Phone3,
+    step1,
+    step2,
+    step3
 }
