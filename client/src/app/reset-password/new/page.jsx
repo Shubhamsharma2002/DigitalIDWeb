@@ -4,8 +4,7 @@ import { useState } from "react";
 
 export default function NewPasswordPage() {
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] =
-    useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,35 +13,24 @@ export default function NewPasswordPage() {
       return alert("Passwords do not match");
     }
 
-    alert(
-      "Password reset feature connected successfully 🔥"
-    );
+    alert("Password reset feature connected successfully 🔥");
   };
 
   return (
     <div className="min-h-screen bg-[#F8FAFF] flex items-center justify-center px-4">
       <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl border border-slate-100">
-
         <h1 className="text-3xl font-black text-[#0B1437] mb-2">
           Create New Password 🔐
         </h1>
 
-        <p className="text-slate-500 mb-8">
-          Enter your new password below.
-        </p>
+        <p className="text-slate-500 mb-8">Enter your new password below.</p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-5"
-        >
-
+        <form onSubmit={handleSubmit} className="space-y-5">
           <input
             type="password"
             placeholder="New Password"
             value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full rounded-xl border px-4 py-3 outline-none"
             required
           />
@@ -51,9 +39,7 @@ export default function NewPasswordPage() {
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={(e) =>
-              setConfirmPassword(e.target.value)
-            }
+            onChange={(e) => setConfirmPassword(e.target.value)}
             className="w-full rounded-xl border px-4 py-3 outline-none"
             required
           />
@@ -64,7 +50,6 @@ export default function NewPasswordPage() {
           >
             Reset Password
           </button>
-
         </form>
       </div>
     </div>
