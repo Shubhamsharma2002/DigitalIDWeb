@@ -5,7 +5,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import sendEmail from "../utils/sendEmail.js";
-
+import crypto from "crypto";
 // ===============================
 // COOKIE OPTIONS
 // ===============================
@@ -269,3 +269,36 @@ export const resetPassword = asyncHandler(
     );
   }
 );
+
+export const updateResetPassword = asyncHandler(async (req, res) => {
+  const { token, password } = req.body;
+
+  if (!token || !password) {
+    throw new ApiError(400, "Token and new password are required");
+  }
+
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(token)
+    .digest("hex");
+
+  const admin = await Admin.findOne({
+    resetPasswordToken: hashedToken,
+    resetPasswordExpiry: { $gt: Date.now() },
+  }).select("+password +resetPasswordToken +resetPasswordExpiry");
+
+  if (!admin) {
+    throw new ApiError(400, "Invalid or expired reset token");
+  }
+
+  admin.password = password;
+  admin.resetPasswordToken = "";
+  admin.resetPasswordExpiry = null;
+  admin.refreshToken = "";
+
+  await admin.save();
+
+  return res.status(200).json(
+    new ApiResponse(200, null, "Password updated successfully")
+  );
+});
