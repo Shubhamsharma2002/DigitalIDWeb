@@ -203,73 +203,88 @@ export const logoutAdmin = asyncHandler(async (req, res) => {
 // ===============================
 // RESET PASSWORD
 // ===============================
-export const resetPassword = asyncHandler(
-  async (req, res) => {
+export const resetPassword = asyncHandler(async (req, res) => {
+  const { email } = req.body;
 
-    const { email } = req.body;
-
-    if (!email) {
-      throw new ApiError(400, "Email required");
-    }
-
-    const admin = await Admin.findOne({ email });
-
-    if (!admin) {
-      throw new ApiError(404, "Admin not found");
-    }
-
-    // reset link
-    const resetLink =
-      "http://localhost:3000/reset-password/new";
-
-    // send email
-    await sendEmail({
-      to: email,
-
-      subject: "Reset Your Password",
-
-      html: `
-        <div style="font-family:sans-serif;padding:20px;">
-          
-          <h2>Digital ID Password Reset 🔐</h2>
-
-          <p>
-            We received a request to reset your password.
-          </p>
-
-          <a 
-            href="${resetLink}"
-            style="
-              display:inline-block;
-              padding:12px 20px;
-              background:#4f46e5;
-              color:white;
-              text-decoration:none;
-              border-radius:8px;
-              margin-top:10px;
-            "
-          >
-            Reset Password
-          </a>
-
-          <p style="margin-top:20px;color:gray;">
-            If you did not request this, please ignore this email.
-          </p>
-
-        </div>
-      `,
-    });
-
-    return res.status(200).json(
-      new ApiResponse(
-        200,
-        null,
-        "Password reset email sent successfully"
-      )
-    );
+  if (!email) {
+    throw new ApiError(400, "Email required");
   }
-);
 
+  const admin = await Admin.findOne({ email });
+
+  if (!admin) {
+    throw new ApiError(404, "Admin not found");
+  }
+
+  // generate raw token
+  const resetToken = crypto.randomBytes(32).toString("hex");
+
+  // hash token
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  // save token in DB
+  admin.resetPasswordToken = hashedToken;
+
+  admin.resetPasswordExpiry =
+    Date.now() + 15 * 60 * 1000;
+
+  await admin.save({
+    validateBeforeSave: false,
+  });
+
+  // frontend link
+  const resetLink =
+    `http://localhost:3000/reset-password/new?token=${resetToken}`;
+
+  // send mail
+  await sendEmail({
+    to: email,
+
+    subject: "Reset Your Password",
+
+    html: `
+      <div style="font-family:sans-serif;padding:20px;">
+
+        <h2>Digital ID Password Reset 🔐</h2>
+
+        <p>
+          Click the button below to reset your password.
+        </p>
+
+        <a
+          href="${resetLink}"
+          style="
+            display:inline-block;
+            padding:12px 20px;
+            background:#4f46e5;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+            margin-top:10px;
+          "
+        >
+          Reset Password
+        </a>
+
+        <p style="margin-top:20px;color:gray;">
+          Link valid for 15 minutes.
+        </p>
+
+      </div>
+    `,
+  });
+
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      null,
+      "Password reset email sent successfully"
+    )
+  );
+});
 export const updateResetPassword = asyncHandler(async (req, res) => {
   const { token, password } = req.body;
 
