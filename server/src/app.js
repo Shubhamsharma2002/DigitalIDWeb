@@ -9,10 +9,6 @@ import organizationRoutes from "./routes/organization.routes.js";
 import memberRoutes from "./routes/member.routes.js";
 import appRoutes from "./routes/app.routes.js";
 const server = express();
-
-
-
-
 server.use(
   cors({
     origin: process.env.CORS_ORIGIN || "http://localhost:3000",
