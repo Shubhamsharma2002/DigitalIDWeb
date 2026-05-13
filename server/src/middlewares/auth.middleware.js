@@ -14,10 +14,7 @@ export const verifyAdmin = async (req, res, next) => {
       });
     }
 
-    const decoded = jwt.verify(
-      token,
-      process.env.ACCESS_TOKEN_SECRET
-    );
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
     const admin = await Admin.findById(decoded.id)
       .populate("organization")
@@ -32,13 +29,10 @@ export const verifyAdmin = async (req, res, next) => {
 
     req.admin = admin;
 
-    req.organization =
-      admin.organization?._id || admin.organization;
+    req.organization = admin.organization?._id || admin.organization;
 
     next();
-
   } catch (error) {
-
     return res.status(401).json({
       success: false,
       message: "Invalid or expired token",
