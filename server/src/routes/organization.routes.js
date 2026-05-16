@@ -13,7 +13,4 @@ router.get("/", verifyAdmin, getOrganization);
 
 router.patch("/", verifyAdmin, updateOrganization);
 
-
-
-
 export default router;
