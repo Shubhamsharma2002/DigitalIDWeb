@@ -17,10 +17,6 @@ router.get("/", verifyAdmin, getAllMembers);
 
 router.patch("/:id", verifyAdmin, updateMember);
 
-router.patch(
-  "/:id/status",
-  verifyAdmin,
-  toggleMemberStatus
-);
+router.patch("/:id/status", verifyAdmin, toggleMemberStatus);
 
 export default router;
