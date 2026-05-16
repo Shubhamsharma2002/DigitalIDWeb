@@ -1,8 +1,6 @@
 import express from "express";
 
-import {
-  getMyDigitalId,
-} from "../controllers/app.controller.js";
+import { getMyDigitalId } from "../controllers/app.controller.js";
 
 const router = express.Router();
 
