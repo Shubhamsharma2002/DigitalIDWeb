@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 8000 ;
 
 const startServer = async () => {
   try {
+
+    
     await connectDB();
 
     server.listen(PORT, () => {
