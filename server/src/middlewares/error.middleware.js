@@ -23,8 +23,4 @@ const errorHandler = (
     data: error.data,
   });
 };
-
-
-
-
 export default errorHandler;
