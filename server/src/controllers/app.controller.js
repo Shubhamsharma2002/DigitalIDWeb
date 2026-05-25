@@ -42,7 +42,7 @@ export const getMyDigitalId = asyncHandler(
           digitalId: member.digitalId,
           organization: member.organization,
         },
-        "Digital ID fetched successfully"
+        " Digital ID fetched successfully "
       )
     );
   }
