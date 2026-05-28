@@ -7,7 +7,7 @@ import ApiResponse from "../utils/ApiResponse.js";
 
 // ========== ==================   ==========
 // GET MY DIGITAL ID  ....................... .........
-// ========  ====================   ==========
+// ========  ====================   ==========                
 export const getMyDigitalId = asyncHandler(
   async (req, res) => {
 
@@ -21,7 +21,7 @@ export const getMyDigitalId = asyncHandler(
     }
 
     
-    // find member .............  ....................  ..........
+    // find member .............  ....................  d..........
     const member = await Member.findOne({
       email,
     })
