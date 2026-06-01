@@ -32,6 +32,8 @@ export const getMyDigitalId = asyncHandler(
         "No digital ID found for this user"
       );
     }
+
+    
     return res.status(200).json(
       new ApiResponse(
         200,
