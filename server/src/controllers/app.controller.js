@@ -7,7 +7,9 @@ import ApiResponse from "../utils/ApiResponse.js";
 
 // ==========      ==================         ==========
 // GET           MY DIGITAL ID  ...........    ............ .........
-// ========       ====================        ==========                
+// ========       ====================        ==========  
+
+
 export const getMyDigitalId = asyncHandler(
   async (req, res) => {
 
