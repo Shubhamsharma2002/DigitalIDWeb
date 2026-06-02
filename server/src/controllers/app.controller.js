@@ -31,7 +31,7 @@ export const getMyDigitalId = asyncHandler(
     if (!member) {
       throw new ApiError(
         404,
-        "No digital ID found for this user"
+        " No digital ID found for this user "
       );
     }
     return res.status(200).json(
