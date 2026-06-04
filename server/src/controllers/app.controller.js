@@ -26,7 +26,6 @@ export const getMyDigitalId = asyncHandler(
       email,
     })
 
-    
       .populate(" organization ")
       .populate("digitalId");
 
