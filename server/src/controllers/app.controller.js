@@ -25,6 +25,8 @@ export const getMyDigitalId = asyncHandler(
     const member = await Member.findOne({
       email,
     })
+
+    
       .populate(" organization ")
       .populate("digitalId");
 
