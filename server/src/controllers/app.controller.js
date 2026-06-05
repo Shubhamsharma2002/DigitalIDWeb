@@ -21,9 +21,7 @@ export const getMyDigitalId = asyncHandler(
         "Email is required"
       );
     }
-    // find member .............  ....................  d..........
-
-    
+    // find member .............  ....................  d.........
     const member = await Member.findOne({
       email,
     })
