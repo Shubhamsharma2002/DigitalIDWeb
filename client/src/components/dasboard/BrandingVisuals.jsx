@@ -140,7 +140,7 @@ export default function BrandingVisuals() {
                     className="text-sm font-semibold"
                     style={{ color: selectedColor }}
                   >
-                    Student
+                    Student  
                   </p>
                 </div>
               </div>
