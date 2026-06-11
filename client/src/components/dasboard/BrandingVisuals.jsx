@@ -135,7 +135,7 @@ export default function BrandingVisuals() {
 
                 <div>
                   <p className="font-black text-[#0B1437]">Rahul Sharma</p>
-                  <p className="text-sm text-slate-500">ID: ABC12345</p>
+                  <p className="text-sm text-slate-500">ID:ABC12345</p>
                   <p
                     className="text-sm font-semibold"
                     style={{ color: selectedColor }}
