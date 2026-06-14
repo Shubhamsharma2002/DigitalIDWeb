@@ -65,7 +65,7 @@ export default function BrandingVisuals() {
                   ☁️
                 </div>
                 <p className="font-bold text-[#0B1437]">
-                  Click to upload logo ---
+                  Click to upload logo ---  
                 </p>
                 <p className="mt-1 text-sm text-slate-500">
                   PNG, JPG or SVG max 2MB.... 
