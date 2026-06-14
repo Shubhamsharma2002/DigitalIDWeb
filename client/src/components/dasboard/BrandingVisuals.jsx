@@ -68,7 +68,7 @@ export default function BrandingVisuals() {
                   Click to upload logo ---
                 </p>
                 <p className="mt-1 text-sm text-slate-500">
-                  PNG, JPG or SVG max 2MB....
+                  PNG, JPG or SVG max 2MB.... 
                 </p>
               </div>
             )}
